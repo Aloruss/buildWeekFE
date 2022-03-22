@@ -1,4 +1,3 @@
-import "./AccordionList.css";
 import { AccordionProjects } from "../components/AccordionProjects";
 import { v4 as uuidv4 } from "uuid";
 
@@ -14,13 +13,15 @@ export const AccordionList = ({ accordionData, handleToggle, toggle }) => {
         >
           {" "}
           <b>
-            {clientId === toggle ? "-" : "+"} {clientName}
+            {clientId === toggle ? <span>&#8681;</span> : <span>&#8680;</span>}{" "}
+            {clientName}
           </b>
         </div>
         {clientId === toggle ? (
           <>
             <div className='card-body'>
-              <img src={logo} alt='#' /> {description}
+              <img src={logo} alt='#' />
+              <div>{description}</div>
               <h5>Tech Stack</h5>
               {stackTech.map((item, index) => {
                 return <li key={uuidv4()}>{item}</li>;

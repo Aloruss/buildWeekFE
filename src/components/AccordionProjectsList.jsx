@@ -26,7 +26,8 @@ export const AccordionProjectsList = ({
         >
           {" "}
           <b>
-            {projectId === toggle ? "-" : "+"} {projectName}
+            {projectId === toggle ? <span>&#8681;</span> : <span>&#8680;</span>}{" "}
+            {projectName}
           </b>
         </div>
         {projectId === toggle ? (
