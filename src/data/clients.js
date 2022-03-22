@@ -1,11 +1,18 @@
 export const clients = [
   {
     clientId: 1,
-    clientName: "Client 1",
+    clientName: "LLOYDS",
     logo: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.seoclerk.com%2Fpics%2F000%2F748%2F061%2Fbd1ddcf20243b5366e14524b6b79c773.png&f=1&nofb=1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id varius risus. Phasellus ac enim sit amet dui pellentesque consequat.",
-    stackTech: ["React", "Typescript"],
+    stackTech: [
+      "React",
+      "Typescript",
+      "React",
+      "Typescript",
+      "React",
+      "Typescript",
+    ],
     projects: [
       {
         projectId: 1,
