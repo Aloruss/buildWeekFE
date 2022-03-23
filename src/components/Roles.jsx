@@ -28,14 +28,16 @@ export const Roles = ({ roles }) => {
 
         return (
           <>
-            <button
-              type='button'
-              className='btn btn-danger ms-2 mb-2 '
-              onClick={() => handleClick(key)}
-            >
-              {key} enrolled: {enrolledQuantity} out of {totalQuantity}{" "}
-              positions available
-            </button>
+            {totalQuantity > 0 ? (
+              <button
+                type='button'
+                className='btn btn-danger ms-2 mb-2 '
+                onClick={() => handleClick(key)}
+              >
+                {key} enrolled: {enrolledQuantity} out of {totalQuantity}
+                positions available
+              </button>
+            ) : null}
           </>
         );
       })}
