@@ -15,8 +15,8 @@ export const Accordion = () => {
 
   return (
     <div className='container-fluid'>
-      <div className='row mt-5'>
-        <div className='col-md-6'>
+      <div className='row mt-5 '>
+        <div className='col-md-9 m-auto'>
           <AccordionList
             accordionData={clients}
             handleToggle={handleToggle}

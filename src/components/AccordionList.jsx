@@ -21,15 +21,15 @@ export const AccordionList = ({ accordionData, handleToggle, toggle }) => {
           <>
             <div className='card-body'>
               <div className='d-flex'>
-                <img src={logo} alt='#' />
-                <div className='d-flex flex-column'>
-                  <div>{description}</div>
+                <img className='me-5' src={logo} alt='#' />
+                <div className='d-flex flex-column ms-2'>
+                  <div className=' mb-2 '>{description}</div>
                   <b>Tech Stack:</b>
-                  <ul className='d-flex flex-wrap'>
+                  <ul className='list-group list-group-flush'>
                     {stackTech.map((item, index) => {
                       return (
-                        <li className='ps-1 list-unstyled' key={uuidv4()}>
-                          -{item}
+                        <li className='list-group-item' key={uuidv4()}>
+                          {item}
                         </li>
                       );
                     })}
