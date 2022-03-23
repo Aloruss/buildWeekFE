@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { RoleList } from "./RoleList";
-
+import { getRoleObject } from "../helper/getRoleObject";
 export const Roles = ({ roles }) => {
   const rolesKeys = roles.map((role) => Object.keys(role));
   const [toggle, setToggle] = useState(false);
@@ -15,16 +15,17 @@ export const Roles = ({ roles }) => {
   const handleClick = (key) => {
     setToggle(true);
     console.log("key", key);
-    const roleObject = roles.find(
-      (role) => Object.keys(role)[0].toString() === key.toString()
-    );
+    const roleObject = getRoleObject(roles, key);
 
     console.log(roleObject);
-    setAndis({ ...roleObject[key] });
+    setAndis(roleObject);
   };
   return (
     <>
       {rolesKeys.map((key) => {
+        const enrolledQuantity = getRoleObject(roles, key)["enrolled"].length;
+        const totalQuantity = getRoleObject(roles, key)["quantityTotal"];
+
         return (
           <>
             <button
@@ -32,9 +33,9 @@ export const Roles = ({ roles }) => {
               className='btn btn-danger ms-2 mb-2 '
               onClick={() => handleClick(key)}
             >
-              {key}
+              {key} enrolled: {enrolledQuantity} out of {totalQuantity}{" "}
+              positions available
             </button>
-            <></>
           </>
         );
       })}

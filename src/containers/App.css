@@ -55,3 +55,38 @@ img {
   height: 4em;
   border-radius: 50%;
 }
+
+.buttons {
+  padding-left: 60px;
+  padding-right: 60px;
+  border: none;
+  margin: 5px;
+  background-color: white;
+}
+
+.buttons:hover {
+  color: red;
+}
+
+.form {
+  display: block;
+  position: relative;
+  right: 554px;
+  margin: auto;
+}
+label {
+  width: 400px;
+  display: inline-block;
+  margin: 10px;
+}
+legend {
+  text-align: center;
+}
+
+.input {
+  width: 370px;
+  margin-left: 9px;
+  border: none;
+  border-bottom: 2px solid red;
+  outline: none;
+}

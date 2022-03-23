@@ -168,7 +168,7 @@ export const clients = [
           },
           {
             PA: {
-              quantityTotal: 2,
+              quantityTotal: 0,
               enrolled: [],
             },
           },
