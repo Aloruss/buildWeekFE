@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./NavBar.css";
 import logo from "../public/images/logo.svg";
+import { Link } from "react-router-dom";
 
 import {
   ProSidebar,
@@ -48,9 +49,13 @@ export const NavBar = () => {
           <SidebarContent>
             <Menu iconShape='square'>
               <MenuItem active={true} icon={<FiHome />}>
+                <Link to='/' />
                 Home
               </MenuItem>
-              <MenuItem icon={<GrUserAdmin />}>Admin</MenuItem>
+              <MenuItem icon={<GrUserAdmin />}>
+                <Link to='/admin' />
+                Admin
+              </MenuItem>
             </Menu>
           </SidebarContent>
         </ProSidebar>

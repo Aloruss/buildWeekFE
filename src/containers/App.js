@@ -1,16 +1,23 @@
 import "./App.css";
 import { Accordion } from "../components/Accordion";
 import { NavBar } from "../components/NavBar";
-import AdminPage from "../components/AdminPage";
+import { AdminPasswordForm } from "../components/AdminPasswordForm";
+import { AdminLanding } from "../components/AdminLanding";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootswatch/dist/flatly/bootstrap.min.css";
-// this is comment to check if pravin can push to bootstrap_feature branch.
+
 function App() {
   return (
-    <div className='d-flex align-items-start'>
-      <NavBar />
-      <Accordion />
-      <AdminPage />
-    </div>
+    <Router>
+      <div className='d-flex align-items-start'>
+        <NavBar />
+        <Routes>
+          <Route path='/' element={<Accordion />} />
+          <Route path='/admin' element={<AdminPasswordForm />} />
+          <Route path='/admin/landing' element={<AdminLanding />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 export default App;

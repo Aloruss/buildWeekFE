@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const AdminPage = () => {
+export const AdminPage2 = () => {
   const [showFormForAndi, setShowFromForAndi] = useState("false");
   const [showFormForClient, setShowFromForClient] = useState("false");
   const [showFormForProject, setShowFromForProject] = useState("false");
@@ -146,4 +146,3 @@ const AdminPage = () => {
     </>
   );
 };
-export default AdminPage;
