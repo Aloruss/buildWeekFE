@@ -14,7 +14,9 @@ export const Accordion = () => {
   };
 
   return (
+    <>
     <div className='container-fluid'>
+    <h1 id="infoOnClientPage">Clients and projects of Club Sparck</h1>
       <div className='row mt-5 '>
         <div className='col-md-9 m-auto'>
           <AccordionList
@@ -25,5 +27,7 @@ export const Accordion = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
+//testing
