@@ -31,11 +31,11 @@ export const Roles = ({ roles }) => {
             {totalQuantity > 0 ? (
               <button
                 type='button'
-                className='fw-bold btn ms-2 mb-2  text-black'
+                className='fw-bold btn ms-2 mb-2 '
                 onClick={() => handleClick(key)}
-                style={{backgroundColor: '#ff323c'}}
+                style={{backgroundColor: '#ff323c', color: `#fff`}}
               >
-                {key} enrolled: {enrolledQuantity} out of {totalQuantity} positions available
+                {`${key} enrolled: ${enrolledQuantity} out of ${totalQuantity} positions available`}
               </button>
             ) : null}
           </>
