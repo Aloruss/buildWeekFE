@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { Textfield } from "./TextField";
 import { Button } from "./Button";
 import { useNavigate } from "react-router-dom";
-
+// all the forms can be refactored because they mostly contain common code
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
     marginTop: theme.spacing(5),

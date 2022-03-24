@@ -2,18 +2,18 @@ import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 export const RoleListItem = ({ andi }) => {
-  const { name, squad, role, level, andTitle, photo } = andi;
+  const { name, squad, level, andTitle, photo } = andi;
   const [toggle, setToggle] = useState(false);
   return (
     <li key={uuidv4()}>
       <div className='card'>
-        <div style={{cursor: 'pointer'}} className='d-flex flex-raw p-2 align-items-center card-body' onClick={() => setToggle(!toggle)}>
+        <div
+          style={{ cursor: "pointer" }}
+          className='d-flex flex-raw p-2 align-items-center card-body'
+          onClick={() => setToggle(!toggle)}
+        >
           <img className='avatar' src={photo} alt='#' />
-          <a
-            role='button'
-            className='p-2 link-primary  text-decoration-none'
-            
-          >
+          <a role='button' className='p-2 link-primary  text-decoration-none'>
             <b>{name}</b>
           </a>
         </div>

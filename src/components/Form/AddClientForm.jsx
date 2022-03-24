@@ -8,8 +8,8 @@ import { Select } from "../Form/Select";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
 
+// all the forms can be refactored because they mostly contain common code
 const techStackOptions = {
   React: "React",
   Typescript: "Typescript",
@@ -29,10 +29,12 @@ const INITIAL_FORM_STATE = {
   stackTech: "",
 };
 const FORM_VALIDATION = Yup.object().shape({
-  name: Yup.string().required("Required").matches(stringRegex, "Just letters"),
+  name: Yup.string()
+    .required("Required")
+    .matches(stringRegex, "This field can contain just letters"),
   logo: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
-  stackTech: Yup.string().typeError("Please select at least one").required(),
+  stackTech: Yup.string().typeError("Please select a Tech").required(),
 });
 export const AddClientForm = () => {
   const classes = useStyles();

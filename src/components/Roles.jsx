@@ -30,19 +30,19 @@ export const Roles = ({ roles, andisData }) => {
         const totalQuantity = getRoleObject(roles, key)["quantityTotal"];
 
         return (
-          <>
+          <div key={uuidv4()}>
             {totalQuantity > 0 ? (
               <button
                 key={uuidv4()}
                 type='button'
                 className='fw-bold btn ms-2 mb-2 '
                 onClick={() => handleClick(key)}
-                style={{backgroundColor: '#ff323c', color: `#fff`}}
+                style={{ backgroundColor: "#ff323c", color: `#fff` }}
               >
                 {`${key} enrolled: ${enrolledQuantity} out of ${totalQuantity} positions available`}
               </button>
             ) : null}
-          </>
+          </div>
         );
       })}
       {toggle && <RoleList key={uuidv4()} andis={andis} />}

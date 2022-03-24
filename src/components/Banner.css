@@ -1,19 +1,12 @@
 .banner-box {
-    color: #fff;
-    background-color: #ff323c;
-    text-align: center;
-    /* font-size: 150%; */
-    font-family: 'Poppins';
-    box-shadow: rgb(0 0 0 / 50%) 0px 0px 3px;
-    height: 141px;
+  color: #fff;
+  background-color: #ff323c;
+  text-align: center;
+  /* font-size: 150%; */
+  font-family: "Poppins";
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 3px;
+  height: 141px;
 }
 h1 {
-    font-size: 400px;
+  font-size: 400px;
 }
-
-
-
-
-/* .sub-box {
-    color: black;
-} */

@@ -8,7 +8,7 @@ import { Button } from "../Form/Button";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+// all the forms can be refactored because they mostly contain common code
 const andiNameAndId = {};
 andis.forEach((item) => {
   andiNameAndId[item.andiId] = item.name;
@@ -29,13 +29,19 @@ const INITIAL_FORM_STATE = {
   andTitle: "",
 };
 const FORM_VALIDATION = Yup.object().shape({
-  name: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  squad: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  role: Yup.string().required("Required").matches(stringRegex, "Just letters"),
+  name: Yup.string()
+    .required("Required")
+    .matches(stringRegex, "This field can contain just letters"),
+  squad: Yup.string()
+    .required("Required")
+    .matches(stringRegex, "This field can contain just letters"),
+  role: Yup.string()
+    .required("Required")
+    .matches(stringRegex, "This field can contain just letters"),
   level: Yup.number().typeError("Please enter a valid level number").required(),
   andTitle: Yup.string()
     .required("Required")
-    .matches(stringRegex, "Just letters"),
+    .matches(stringRegex, "This field can contain just letters"),
 });
 export const AddAndiForm = () => {
   const classes = useStyles();

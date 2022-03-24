@@ -1,14 +1,14 @@
-import { Roles } from "./Roles";
+import { Roles } from "../Roles";
 import { v4 as uuidv4 } from "uuid";
-
+//can be refactored because use mostly the same of AccordionList
 export const AccordionProjectsList = ({
   accordionData,
   handleToggle,
   toggle,
   andisData,
 }) => {
-  const lorem =
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptatibus!";
+  //data are not fully implemented in the back end so decided to add some fake text
+  const lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit.!";
   return accordionData.map((value) => {
     const {
       projectId,
@@ -29,7 +29,11 @@ export const AccordionProjectsList = ({
         >
           {" "}
           <b>
-            {projectId === toggle ? <span className="aarow">&#8681;</span> : <span className="aarow">&#8680;</span>}{" "}
+            {projectId === toggle ? (
+              <span className='aarow'>&#8681;</span>
+            ) : (
+              <span className='aarow'>&#8680;</span>
+            )}{" "}
             {projectName.toUpperCase()}
           </b>
         </div>

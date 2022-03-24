@@ -12,7 +12,6 @@
   width: 50px;
 }
 
-
 img {
   height: 100px;
   width: 100px;
@@ -66,8 +65,6 @@ img {
 }
 
 .buttons:hover {
-  /* box-shadow: rgb(0 0 0 / 100%) 0px 0px 3px; */
-
   color: #ff323c;
 }
 
@@ -108,4 +105,40 @@ legend {
 
 .and-color {
   background-color: #ff323c;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+.btn {
+  width: 150px;
+  margin-bottom: 25px;
+}
+
+.icon {
+  max-width: 20px;
+  z-index: 1;
+  position: absolute;
+}
+.icon_img {
+  display: flex;
+  align-items: center;
+}
+.icon1 {
+  top: 30px;
+  left: 233px;
+}
+.icon2 {
+  top: 92px;
+  left: 233px;
+}
+.icon3 {
+  top: 155px;
+  left: 228px;
+}
+.icon4 {
+  top: 217px;
+  left: 233px;
 }

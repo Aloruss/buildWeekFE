@@ -1,39 +1,13 @@
 import { RoleListItem } from "./RoleListItem";
+import { v4 as uuidv4 } from "uuid";
 export const RoleList = ({ andis }) => {
   return (
     <>
-      <ul className='list-group list-group-flush list-unstyled'>
+      <ul key={uuidv4()} className='list-group list-group-flush list-unstyled'>
         {andis["enrolled"].map((andi) => {
-          return <RoleListItem andi={andi} />;
+          return <RoleListItem key={uuidv4()} andi={andi} />;
         })}
       </ul>
     </>
   );
 };
-
-/* {rolesKeys.map((key) => {
-        return (
-          <ul key={uuidv4()}>
-            {key}
-            {roles.map((role) => {
-              let andi2;
-              if (role[key]) {
-                andi2 = role[key]["enrolled"].map(
-                  ({ name, squad, role, level, andTitle, photo }) => {
-                    return (
-                      <li key={uuidv4()}>
-                        <p>Name: {name}</p>
-                        <p>Squad: {squad}</p>
-                        <p>Level: {level}</p>
-                        <p>And title: {andTitle}</p>
-                        <img src={photo} alt='#' />
-                      </li>
-                    );
-                  }
-                );
-              }
-              return andi2;
-            })}
-          </ul>
-        );
-      })} */

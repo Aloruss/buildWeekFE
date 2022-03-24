@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { clients } from "../data/clients";
 import { AccordionProjectsList } from "./AccordionProjectsList";
-
+//could be refactored because use mostly the same as Accordion.jsx
 export const AccordionProjects = ({ projects, andisData }) => {
   const [toggle, setToggle] = useState(null);
 

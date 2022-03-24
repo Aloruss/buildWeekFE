@@ -8,7 +8,7 @@ import { Button } from "../Form/Button";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+// all the forms can be refactored because they mostly contain common code
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
     marginTop: theme.spacing(5),
@@ -27,7 +27,9 @@ const INITIAL_FORM_STATE = {
 const FORM_VALIDATION = Yup.object().shape({
   projectName: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
-  lead: Yup.string().required("Required").matches(stringRegex, "Just letters"),
+  lead: Yup.string()
+    .required("Required")
+    .matches(stringRegex, "This field can contain just letters"),
   start: Yup.date(),
   end: Yup.date(),
   clientContact: Yup.string(),

@@ -7,7 +7,7 @@ import { Select } from "../Form/Select";
 import { andis } from "../../data/andis";
 import { DateTimePicker } from "../Form/DateTimePicker";
 import { Button } from "../Form/Button";
-
+// all the forms can be refactored because they mostly contain common code
 const andiNameAndId = {};
 andis.forEach((item) => {
   andiNameAndId[item.andiId] = item.name;

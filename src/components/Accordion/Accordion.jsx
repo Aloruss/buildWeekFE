@@ -1,26 +1,25 @@
 import React from "react";
 import { useState } from "react";
-import { clients } from "../data/clients";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../../hooks/useFetch";
 import { AccordionList } from "./AccordionList";
-import { Banner } from "../components/Banner";
-import { Description } from "./Description";
+import { Banner } from "../Banner";
+import { Description } from "../Description";
 export const Accordion = () => {
   const [toggle, setToggle] = useState(null);
   const {
-    data: clientz,
+    data: clients,
     loading,
     error,
   } = useFetch("http://127.0.0.1:5000/moonapi/v1/clients");
   const {
-    data: projectz,
-    loading: loadingProjectz,
-    error: errorProjectz,
+    data: projects,
+    loading: loadingProjects,
+    error: errorProjects,
   } = useFetch("http://127.0.0.1:5000/moonapi/v1/projects");
   const {
-    data: andiz,
-    loading: loadingAndiz,
-    error: errorAndiz,
+    data: andis,
+    loading: loadingAndis,
+    error: errorAndis,
   } = useFetch("http://127.0.0.1:5000/moonapi/v1/andis");
 
   let handleToggle = (id) => {
@@ -33,17 +32,18 @@ export const Accordion = () => {
 
   return (
     <>
-      {clientz && andiz && projectz && (
+      {(loading || loadingProjects || loadingAndis) && <p>{loading}</p>}
+      {(error || errorAndis || errorProjects) && <p>{error}</p>}
+      {clients && andis && projects && (
         <div className='container-fluid p-0'>
           <Banner />
           <Description />
-          {/* <h1 id="infoOnClientPage">Clients and projects of Club Sparck</h1> */}
           <div className='row'>
             <div className='col-md m-auto'>
               <AccordionList
-                clientsData={clientz}
-                projectsData={projectz}
-                andisData={andiz}
+                clientsData={clients}
+                projectsData={projects}
+                andisData={andis}
                 handleToggle={handleToggle}
                 toggle={toggle}
               />

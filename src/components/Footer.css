@@ -1,12 +1,10 @@
 .card-footer {
-    position: fixed;
-    z-index: 9999;
-    text-align: center;
-    background-color: #ff323c;
-    color: #000;
-    bottom: 0;
-    width: 100%;
-    box-shadow: rgb(0 0 0 / 50%) 0px 0px 3px;
-
-    /* position: absolute; */
+  position: fixed;
+  z-index: 9999;
+  text-align: center;
+  background-color: #ff323c;
+  color: #000;
+  bottom: 0;
+  width: 100%;
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 3px;
 }
