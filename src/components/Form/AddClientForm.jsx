@@ -3,17 +3,17 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { Formik, Form as Formi } from "formik";
 import * as Yup from "yup";
 import { Textfield } from "../Form/TextField";
-import { andis } from "../../data/andis";
 import { Button } from "../Form/Button";
+import { Select } from "../Form/Select";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const andiNameAndId = {};
-andis.forEach((item) => {
-  andiNameAndId[item.andiId] = item.name;
-});
-
+const techStackOptions = {
+  React: "React",
+  Typescript: "Typescript",
+  JavaScript: "JavaScript",
+};
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
     marginTop: theme.spacing(5),
@@ -23,21 +23,17 @@ const useStyles = makeStyles((theme) => ({
 const stringRegex = /[a-zA-Z]/;
 const INITIAL_FORM_STATE = {
   name: "",
-  squad: "",
-  role: "",
-  level: "",
-  andTitle: "",
+  logo: "",
+  description: "",
+  stackTech: [],
 };
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  squad: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  role: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  level: Yup.number().typeError("Please enter a valid level number").required(),
-  andTitle: Yup.string()
-    .required("Required")
-    .matches(stringRegex, "Just letters"),
+  logo: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  stackTech: Yup.string().typeError("Please select at least one").required(),
 });
-export const AddAndiForm = () => {
+export const AddClientForm = () => {
   const classes = useStyles();
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
@@ -78,23 +74,28 @@ export const AddAndiForm = () => {
                         </Typography>
                       </Grid>
                       <Grid item xs={6}>
-                        <Textfield name='name' label='Full Name' />
+                        <Textfield name='name' label='Client name' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='squad' label='Squad' />
+                        <Textfield name='logo' label='Logo url' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='role' label='Role' />
+                        <Textfield
+                          name='description'
+                          label='Description'
+                          multiline={true}
+                          rows={4}
+                        />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='level' label='level' />
-                      </Grid>
-                      <Grid item xs={6} />
-                      <Grid item xs={6}>
-                        <Textfield name='andTitle' label='AND title' />
+                        <Select
+                          name='stackTech'
+                          label='Tech Stack'
+                          options={techStackOptions}
+                        />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
