@@ -8,6 +8,7 @@ import { Select } from "../Form/Select";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 // all the forms can be refactored because they mostly contain common code
 const techStackOptions = {
@@ -103,7 +104,13 @@ export const AddClientForm = () => {
                         />
                       </Grid>
                       <Grid item xs={6} />
-                      <Grid item xs={6}>
+                      <Grid item xs={3}>
+                        <ArrowBackIosIcon
+                          color='secondary'
+                          onClick={() => navigate("/admin/landing")}
+                        />
+                      </Grid>
+                      <Grid item xs={3}>
                         <Button>Submit</Button>
                       </Grid>
                     </Grid>
