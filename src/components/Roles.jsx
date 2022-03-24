@@ -2,6 +2,7 @@ import { useState } from "react";
 import { RoleList } from "./RoleList";
 import { getRoleObject } from "../helper/getRoleObject";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "@material-ui/core";
 
 export const Roles = ({ roles, andisData }) => {
   const rolesKeys = roles.map((role) => Object.keys(role));
@@ -32,15 +33,16 @@ export const Roles = ({ roles, andisData }) => {
         return (
           <div key={uuidv4()}>
             {totalQuantity > 0 ? (
-              <button
+              <Button
                 key={uuidv4()}
-                type='button'
-                className='fw-bold btn ms-2 mb-2 '
+                variant='contained'
+                color='secondary'
                 onClick={() => handleClick(key)}
-                style={{ backgroundColor: "#ff323c", color: `#fff` }}
+                size='medium'
+                style={{ width: "50em", marginBottom: "0.5em" }}
               >
                 {`${key} enrolled: ${enrolledQuantity} out of ${totalQuantity} positions available`}
-              </button>
+              </Button>
             ) : null}
           </div>
         );
