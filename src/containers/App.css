@@ -1,5 +1,5 @@
 .body {
-  background-color: #f6f1f1;
+  background-color: rgb(246, 241, 241);
   margin: 0;
 }
 
@@ -11,6 +11,8 @@
   height: 50px;
   width: 50px;
 }
+
+
 img {
   height: 100px;
   width: 100px;
@@ -53,7 +55,6 @@ img {
 .avatar {
   width: 4em;
   height: 4em;
-  border-radius: 50%;
 }
 
 .buttons {
@@ -65,7 +66,9 @@ img {
 }
 
 .buttons:hover {
-  color: red;
+  /* box-shadow: rgb(0 0 0 / 100%) 0px 0px 3px; */
+
+  color: #ff323c;
 }
 
 .form {
@@ -87,6 +90,22 @@ legend {
   width: 370px;
   margin-left: 9px;
   border: none;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #ff323c;
   outline: none;
+}
+
+.aarow {
+  color: #ff323c;
+}
+
+.no-border {
+  border-style: none;
+}
+
+.and-logo {
+  color: #fff;
+}
+
+.and-color {
+  background-color: #ff323c;
 }

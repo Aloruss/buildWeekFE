@@ -1,8 +1,12 @@
 #header {
   position: flex;
+  box-shadow: rgb(0 0 0 / 40%) 0px 0px 3px;
+
 }
 #header .pro-sidebar {
   height: 100vh;
+  box-shadow: rgb(0 0 0 / 20%) 0px 0px 3px;
+
 }
 #header .closemenu {
   color: #000;
@@ -57,13 +61,15 @@
   ul
   .pro-inner-item
   .pro-icon-wrapper {
-  background-color: #ff323c;
+  background-color: #fff;
   color: #000;
-  border-radius: 3px;
+  /* border-radius: 3px; */
 }
 
 .pro-menu-item :hover {
-  background-color: grey;
+  /* box-shadow: rgb(0 0 0 / 90%) 0px 0px 3px; */
+
+  background-color: #c5c5c5;
 }
 
 #header
