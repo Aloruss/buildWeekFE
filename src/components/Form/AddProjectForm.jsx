@@ -3,17 +3,12 @@ import { Container, Grid, Typography } from "@material-ui/core";
 import { Formik, Form as Formi } from "formik";
 import * as Yup from "yup";
 import { Textfield } from "../Form/TextField";
-import { andis } from "../../data/andis";
+import { DateTimePicker } from "../Form/DateTimePicker";
 import { Button } from "../Form/Button";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-const andiNameAndId = {};
-andis.forEach((item) => {
-  andiNameAndId[item.andiId] = item.name;
-});
-
 const useStyles = makeStyles((theme) => ({
   formWrapper: {
     marginTop: theme.spacing(5),
@@ -22,26 +17,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 const stringRegex = /[a-zA-Z]/;
 const INITIAL_FORM_STATE = {
-  name: "",
-  squad: "",
-  role: "",
-  level: "",
-  andTitle: "",
+  projectName: "",
+  description: "",
+  lead: "",
+  start: "",
+  end: "",
+  clientContact: "",
 };
 const FORM_VALIDATION = Yup.object().shape({
-  name: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  squad: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  role: Yup.string().required("Required").matches(stringRegex, "Just letters"),
-  level: Yup.number().typeError("Please enter a valid level number").required(),
-  andTitle: Yup.string()
-    .required("Required")
-    .matches(stringRegex, "Just letters"),
+  projectName: Yup.string().required("Required"),
+  description: Yup.string().required("Required"),
+  lead: Yup.string().required("Required").matches(stringRegex, "Just letters"),
+  start: Yup.date(),
+  end: Yup.date(),
+  clientContact: Yup.string(),
 });
-export const AddAndiForm = () => {
-  const classes = useStyles();
+export const AddProjectForm = () => {
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
   const navigate = useNavigate();
+  const classes = useStyles();
   return (
     <>
       {alert && (
@@ -73,28 +68,37 @@ export const AddAndiForm = () => {
                   <Formi>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Typography>
-                          Please fill those fields with the ANDi details
-                        </Typography>
+                        <Typography>Please fill the project details</Typography>
                       </Grid>
                       <Grid item xs={6}>
-                        <Textfield name='name' label='Full Name' />
+                        <Textfield name='projectName' label='Project Name' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='squad' label='Squad' />
+                        <Textfield
+                          name='description'
+                          label='Description'
+                          multiline={true}
+                          rows={4}
+                        />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='role' label='Role' />
+                        <Textfield name='lead' label='Lead Contact' />
+                      </Grid>
+                      <Grid item xs={6} />
+                      <Grid item xs={3}>
+                        <DateTimePicker name='start' label='Starting Date' />
+                      </Grid>
+                      <Grid item xs={3}>
+                        <DateTimePicker name='end' label='Ending Date' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Textfield name='level' label='level' />
-                      </Grid>
-                      <Grid item xs={6} />
-                      <Grid item xs={6}>
-                        <Textfield name='andTitle' label='AND title' />
+                        <Textfield
+                          name='clientContact'
+                          label='Client Contact'
+                        />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>

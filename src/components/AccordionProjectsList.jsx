@@ -5,7 +5,10 @@ export const AccordionProjectsList = ({
   accordionData,
   handleToggle,
   toggle,
+  andisData,
 }) => {
+  const lorem =
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, voluptatibus!";
   return accordionData.map((value) => {
     const {
       projectId,
@@ -36,15 +39,16 @@ export const AccordionProjectsList = ({
               <div className='d-flex flex-column mx-2 text-capitalize'>
                 <div>
                   <p>
-                    <b className='me-2'>description:</b> {description}
+                    <b className='me-2'>description:</b>{" "}
+                    {description ? description : lorem}
                   </p>
                   <p>
                     <b className='me-2'>lead:</b>
-                    {lead}
+                    {lead ? lead : "n/a"}
                   </p>
                   <p>
                     <b className='me-2'>start:</b>
-                    {start}
+                    {start ? start : "n/a"}
                   </p>
                   <p>
                     <b className='me-2'>end:</b>
@@ -52,11 +56,12 @@ export const AccordionProjectsList = ({
                   </p>
                   <p>
                     <b className='me-2'>client contact:</b>
-                    {clientContact}
+                    {clientContact ? clientContact : "n/a"}
                   </p>
                 </div>
               </div>
-              <Roles key={uuidv4()} roles={roles} />
+
+              <Roles key={uuidv4()} roles={roles} andisData={andisData} />
             </div>
           </>
         ) : (

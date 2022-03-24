@@ -1,9 +1,27 @@
 import { AccordionProjects } from "../components/AccordionProjects";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
-export const AccordionList = ({ accordionData, handleToggle, toggle }) => {
-  return accordionData.map((value) => {
-    const { clientId, clientName, description, stackTech, logo } = value;
+export const AccordionList = ({
+  clientsData,
+  handleToggle,
+  toggle,
+  projectsData,
+  andisData,
+}) => {
+  return clientsData.map((value) => {
+    const { clientId, clientName, description, stackTech, logo, projects } =
+      value;
+    //go through projects, find each of the projects, inside the projectsData
+    let projectsArray = [];
+    for (let project of projects) {
+      for (let projectData of projectsData) {
+        if (projectData.projectId === project.id) {
+          projectsArray.push(projectData);
+        }
+      }
+    }
+
     return (
       <div className='card' key={clientId}>
         <div
@@ -37,12 +55,13 @@ export const AccordionList = ({ accordionData, handleToggle, toggle }) => {
                 </div>
               </div>
             </div>
-            {accordionData.map((client) => {
+            {clientsData.map((client) => {
               if (client.clientId === clientId) {
                 return (
                   <AccordionProjects
                     key={uuidv4()}
-                    projects={client["projects"]}
+                    projects={projectsArray}
+                    andisData={andisData}
                   />
                 );
               }

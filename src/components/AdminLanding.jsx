@@ -39,7 +39,11 @@ export const AdminLanding = () => {
               </Grid>
               <Grid item xs={6} />
               <Grid item xs={6}>
-                <Button color='secondary' variant='outlined'>
+                <Button
+                  color='secondary'
+                  variant='outlined'
+                  onClick={() => navigate("/admin/landing/addproject")}
+                >
                   ADD PROJECT
                 </Button>
               </Grid>

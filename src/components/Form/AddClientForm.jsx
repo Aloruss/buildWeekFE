@@ -8,6 +8,7 @@ import { Select } from "../Form/Select";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const techStackOptions = {
   React: "React",
@@ -25,7 +26,7 @@ const INITIAL_FORM_STATE = {
   name: "",
   logo: "",
   description: "",
-  stackTech: [],
+  stackTech: "",
 };
 const FORM_VALIDATION = Yup.object().shape({
   name: Yup.string().required("Required").matches(stringRegex, "Just letters"),
@@ -59,7 +60,11 @@ export const AddClientForm = () => {
                   initialValues={{ ...INITIAL_FORM_STATE }}
                   validationSchema={FORM_VALIDATION}
                   onSubmit={(values, { setSubmitting, resetForm }) => {
-                    console.log(values);
+                    const stackTeckArray = [values.stackTech];
+                    console.log({
+                      ...values,
+                      stackTech: [...stackTeckArray],
+                    });
                     resetForm(INITIAL_FORM_STATE);
                     setSubmitting(false);
                     setAlertContent("YAAAAAS");
@@ -69,9 +74,7 @@ export const AddClientForm = () => {
                   <Formi>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <Typography>
-                          Please fill those fields with the ANDi details
-                        </Typography>
+                        <Typography>Please fill the Client details</Typography>
                       </Grid>
                       <Grid item xs={6}>
                         <Textfield name='name' label='Client name' />
