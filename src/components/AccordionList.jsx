@@ -23,23 +23,29 @@ export const AccordionList = ({
     }
 
     return (
-      <div className='card' key={clientId}>
+      <div className='card no-border mt-2 p-2 shadow-sm' key={clientId} >
+        <div className="d-flex justify-content-between" style={{ cursor: "pointer", borderCol: '#ff323c' }} onClick={() => handleToggle(clientId)}>         
         <div
-          className='card-header'
-          onClick={() => handleToggle(clientId)}
-          style={{ cursor: "pointer" }}
+          className=''
+          
+          
         >
           {" "}
-          <b>
-            {clientId === toggle ? <span>&#8681;</span> : <span>&#8680;</span>}{" "}
-            {clientName}
+          <b >
+            {clientId === toggle ? <span className="aarow">&#8681;</span> : <span className="aarow">&#8680;</span>}{" "}
+            {clientName.toUpperCase()}
           </b>
+
         </div>
+          <img className='me-5 rounded"' src={logo} alt='#' />
+
+        </div>
+
         {clientId === toggle ? (
           <>
             <div className='card-body'>
               <div className='d-flex'>
-                <img className='me-5' src={logo} alt='#' />
+                {/* <img className='me-5' src={logo} alt='#' /> */}
                 <div className='d-flex flex-column ms-2'>
                   <div className=' mb-2 '>{description}</div>
                   <b>Tech Stack:</b>

@@ -35,11 +35,11 @@ export const Roles = ({ roles, andisData }) => {
               <button
                 key={uuidv4()}
                 type='button'
-                className='btn btn-danger ms-2 mb-2 '
+                className='fw-bold btn ms-2 mb-2 '
                 onClick={() => handleClick(key)}
+                style={{backgroundColor: '#ff323c', color: `#fff`}}
               >
-                {key} enrolled: {enrolledQuantity} out of {totalQuantity}
-                positions available
+                {`${key} enrolled: ${enrolledQuantity} out of ${totalQuantity} positions available`}
               </button>
             ) : null}
           </>

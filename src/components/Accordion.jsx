@@ -3,7 +3,8 @@ import { useState } from "react";
 import { clients } from "../data/clients";
 import { useFetch } from "../hooks/useFetch";
 import { AccordionList } from "./AccordionList";
-
+import { Banner } from "../components/Banner";
+import { Description } from "./Description";
 export const Accordion = () => {
   const [toggle, setToggle] = useState(null);
   const {
@@ -33,9 +34,12 @@ export const Accordion = () => {
   return (
     <>
       {clientz && andiz && projectz && (
-        <div className='container-fluid'>
-          <div className='row mt-5 '>
-            <div className='col-md-9 m-auto'>
+        <div className='container-fluid p-0'>
+          <Banner />
+          <Description />
+          {/* <h1 id="infoOnClientPage">Clients and projects of Club Sparck</h1> */}
+          <div className='row'>
+            <div className='col-md m-auto'>
               <AccordionList
                 clientsData={clientz}
                 projectsData={projectz}

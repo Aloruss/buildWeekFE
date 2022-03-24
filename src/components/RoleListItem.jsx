@@ -7,14 +7,14 @@ export const RoleListItem = ({ andi }) => {
   return (
     <li key={uuidv4()}>
       <div className='card'>
-        <div className='d-flex flex-raw p-2 align-items-center card-body'>
+        <div style={{cursor: 'pointer'}} className='d-flex flex-raw p-2 align-items-center card-body' onClick={() => setToggle(!toggle)}>
           <img className='avatar' src={photo} alt='#' />
           <a
             role='button'
-            className='p-2 link-primary'
-            onClick={() => setToggle(!toggle)}
+            className='p-2 link-primary  text-decoration-none'
+            
           >
-            {name}
+            <b>{name}</b>
           </a>
         </div>
         {toggle && (
