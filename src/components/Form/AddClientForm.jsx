@@ -8,6 +8,7 @@ import { Select } from "../Form/Select";
 import { Alert } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 // all the forms can be refactored because they mostly contain common code
@@ -24,29 +25,30 @@ const useStyles = makeStyles((theme) => ({
 }));
 const stringRegex = /[a-zA-Z]/;
 const INITIAL_FORM_STATE = {
-  name: "",
+  clientName: "",
   logo: "",
   description: "",
   stackTech: "",
 };
 const FORM_VALIDATION = Yup.object().shape({
-  name: Yup.string()
+  clientName: Yup.string()
     .required("Required")
     .matches(stringRegex, "This field can contain just letters"),
   logo: Yup.string().required("Required"),
   description: Yup.string().required("Required"),
-  stackTech: Yup.string().typeError("Please select a Tech").required(),
+  stackTech: Yup.string().typeError("Please add a tech").required(),
 });
 export const AddClientForm = () => {
   const classes = useStyles();
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
   return (
     <>
       {alert && (
         <Alert
-          severity='success'
+          severity={success ? "success" : "error"}
           onClose={() => {
             navigate("/admin/landing");
           }}
@@ -68,10 +70,26 @@ export const AddClientForm = () => {
                       ...values,
                       stackTech: [...stackTeckArray],
                     });
-                    resetForm(INITIAL_FORM_STATE);
-                    setSubmitting(false);
-                    setAlertContent("YAAAAAS");
-                    setAlert(true);
+
+                    axios
+                      .post("http://127.0.0.1:5000/moonapi/v1/newClient/", {
+                        values,
+                      })
+                      .then((res) => {
+                        if (res.status === 200) {
+                          setSuccess(true);
+                          setAlertContent("YAAAAAS");
+                          setAlert(true);
+                          setSubmitting(false);
+                          resetForm(INITIAL_FORM_STATE);
+                        } else {
+                          console.log(res);
+                          setSuccess(false);
+                          setAlertContent("OH NOOOO! SOMETHING WRONG,RETRY");
+                          setAlert(true);
+                        }
+                      })
+                      .catch((err) => console.log(err));
                   }}
                 >
                   <Formi>
@@ -80,7 +98,7 @@ export const AddClientForm = () => {
                         <Typography>Please fill the Client details</Typography>
                       </Grid>
                       <Grid item xs={6}>
-                        <Textfield name='name' label='Client name' />
+                        <Textfield name='clientName' label='Client name' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
@@ -97,11 +115,7 @@ export const AddClientForm = () => {
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={6}>
-                        <Select
-                          name='stackTech'
-                          label='Tech Stack'
-                          options={techStackOptions}
-                        />
+                        <Textfield name='stackTech' label='Tech Stack' />
                       </Grid>
                       <Grid item xs={6} />
                       <Grid item xs={3}>

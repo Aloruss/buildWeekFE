@@ -17,6 +17,9 @@ export const AccordionProjects = ({ projects, andisData }) => {
     <div className='container-fluid'>
       <div className='row '>
         <div className='col-md-12 '>
+          <h4>
+            Projects: <h5>(Click one of the below button to see more info)</h5>
+          </h4>
           <AccordionProjectsList
             accordionData={projects}
             andisData={andisData}

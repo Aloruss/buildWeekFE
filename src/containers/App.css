@@ -142,3 +142,9 @@ legend {
   top: 217px;
   left: 233px;
 }
+
+.and-svg {
+  height: 40%;
+  width: 40%;
+  margin-right: -5%;
+}

@@ -55,13 +55,12 @@ export const AddAndiForm = () => {
   const classes = useStyles();
   const [alert, setAlert] = useState(false);
   const [alertContent, setAlertContent] = useState("");
-  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
   return (
     <>
       {alert && (
         <Alert
-          severity={success ? "success" : "error"}
+          severity='success'
           onClose={() => {
             navigate("/admin/landing");
           }}
@@ -80,24 +79,10 @@ export const AddAndiForm = () => {
                     validationSchema={FORM_VALIDATION}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                       console.log(values);
-                      axios
-                        .post("http://127.0.0.1:5000/moonapi/v1/newAndi/", {
-                          values,
-                        })
-                        .then((res) => {
-                          if (res.status === 201) {
-                            setSuccess(true);
-                            setAlertContent("YAAAAAS");
-                            setAlert(true);
-                            setSubmitting(false);
-                            resetForm(INITIAL_FORM_STATE);
-                          } else {
-                            setSuccess(false);
-                            setAlertContent("OH NOOOO! SOMETHING WRONG,RETRY");
-                            setAlert(true);
-                          }
-                        })
-                        .catch((err) => console.log(err));
+                      resetForm(INITIAL_FORM_STATE);
+                      setSubmitting(false);
+                      setAlertContent("YAAAAAS");
+                      setAlert(true);
                     }}
                   >
                     <Formi>
