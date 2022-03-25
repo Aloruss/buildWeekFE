@@ -14,20 +14,25 @@ export const AccordionProjects = ({ projects, andisData }) => {
   };
 
   return (
-    <div className='container-fluid'>
-      <div className='row '>
-        <div className='col-md-12 '>
-          <h4>
-            Projects: <h5>(Click one of the below button to see more info)</h5>
-          </h4>
-          <AccordionProjectsList
-            accordionData={projects}
-            andisData={andisData}
-            handleToggle={handleToggle}
-            toggle={toggle}
-          />
+    <>
+      <div className='container-fluid'>
+        <div className='row '>
+          <div className='col-md-12 '>
+            {projects.length > 0 && (
+              <>
+                <h4>Projects: </h4>
+                <p>(Click one of the below button to see more info)</p>
+              </>
+            )}
+            <AccordionProjectsList
+              accordionData={projects}
+              andisData={andisData}
+              handleToggle={handleToggle}
+              toggle={toggle}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };

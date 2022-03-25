@@ -46,7 +46,12 @@ export const AccordionList = ({
             <div className='card-body'>
               <div className='d-flex'>
                 <div className='d-flex flex-column ms-2'>
-                  <div className=' mb-2 '>{description}</div>
+                  <div className=' mb-2 '>
+                    <b>Description: </b>
+                    {`${description.charAt(0).toUpperCase()}${description.slice(
+                      1
+                    )}`}
+                  </div>
                   <b>Tech Stack:</b>
                   <ul className='list-group list-group-flush'>
                     {stackTech.map((item, index) => {
